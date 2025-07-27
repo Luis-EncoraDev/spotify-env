@@ -1,0 +1,18 @@
+services:
+  backend:
+    build:
+      context: ./spotify-api
+    ports:
+      - "9090:9090"
+      - "9092:9092" 
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+
+  frontend:
+    build:
+      context: ./spotify-client
+    ports:
+      - "8080:8080"
+    depends_on:
+      - backend
+
